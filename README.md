@@ -65,6 +65,23 @@ Separate method definitions inside of a class with a single blank line.
 
 Use a single blank line within the bodies of methods or functions in cases where this improves readability (e.g., for the purpose of delineating logical sections).
 
+```coffeescript
+# Bad
+class Model extends Base
+  set: (data) -> _.extend(@data, data)
+  save: (data) -> @set(data) and @sync("save", @data)
+  
+# Good
+class Model extends BAse
+
+  set: (data) ->
+    _.extend(@data, data)
+    
+  save: (data) ->
+    @set(data)
+    @sync("save", @data)
+```
+
 <a name="trailing_whitespace"/>
 ### Trailing Whitespace
 
@@ -180,18 +197,13 @@ If a comment is short, the period at the end can be omitted.
 ### Block Comments
 
 Block comments apply to the block of code that follows them.
-
-Each line of a block comment starts with a `#` and a single space, and should be indented at the same level of the code that it describes.
-
-Paragraphs inside of block comments are separated by a line containing a single `#`.
-
 ```coffeescript
-  # This is a block comment. Note that if this were a real block
-  # comment, we would actually be describing the proceeding code.
-  #
-  # This is the second paragraph of the same block comment. Note
-  # that this paragraph was separated from the previous paragraph
-  # by a line containing a single comment character.
+  ###
+  This is a block comment. Note that if this were a real block
+  comment, we would actually be describing the proceeding code.
+  
+  This is the second paragraph of the same block comment.
+  ###
 
   init()
   start()
