@@ -72,7 +72,7 @@ class Model extends Base
   save: (data) -> @set(data) and @sync("save", @data)
   
 # Good
-class Model extends BAse
+class Model extends Base
 
   set: (data) ->
     _.extend(@data, data)
