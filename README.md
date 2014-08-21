@@ -356,7 +356,7 @@ Avoid placing the if clause at the end of the line
 
 ```coffeescript
   #Yes
-  if isReady start()
+  if isReady then start()
   
   #No
   start() if isReady
