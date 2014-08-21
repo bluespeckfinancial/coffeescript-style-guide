@@ -352,6 +352,16 @@ Multi-line if/else clauses should use indentation:
   else ...
 ```
 
+Avoid placing the if clause at the end of the line
+
+```coffeescript
+  #Yes
+  if isReady start()
+  
+  #No
+  start() if isReady
+```
+
 <a name="looping_and_comprehensions"/>
 ## Looping and Comprehensions
 
