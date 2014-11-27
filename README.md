@@ -320,9 +320,9 @@ Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unl
 <a name="conditionals"/>
 ## Conditionals
 
-Favor `unless` over `if` for negative conditions.
+Favor `if not` over `unless` for negative conditions.
 
-Instead of using `unless...else`, use `if...else`:
+Instead of using `if not...else`, use `if...else`:
 
 ```coffeescript
   # Yes
