@@ -393,7 +393,7 @@ result = (item for item in array when item.name is "test")
 For simple iterations, this is ok:
 
 ```coffeescript
-object = one: 1, two: 2
+object = { one: 1, two: 2 }
 alert("#{key} = #{value}") for key, value of object
 ```
 
