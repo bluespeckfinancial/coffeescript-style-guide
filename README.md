@@ -315,7 +315,7 @@ Use string interpolation instead of string concatenation:
 "this is an " + adjective + " string" # No
 ```
 
-Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unless features like string interpolation are being used for the given string.
+Prefer double quoted strings (`""`) instead of single quoted (`''`) strings
 
 <a name="conditionals"/>
 ## Conditionals
@@ -368,8 +368,8 @@ Avoid placing the if clause at the end of the line
 Use functional style code instead of language based iteration where possible:
 
 ```coffeescript
-  # Yes (assuming you have underscore available)
-  result = _.pluck array, 'name'
+  # Yes (assuming you have ramda available)
+  result = R.pluck 'name', array
   
   #No
   result = (item.name for item in array)
@@ -384,17 +384,10 @@ To filter:
 
 ```coffeescript
 # Yes
-result = _.filter array, (item) -> item.name is "test"
+result = R.filter ((item) -> item.name is "test"), array
 
 # No
 result = (item for item in array when item.name is "test")
-```
-
-For simple iterations, this is ok:
-
-```coffeescript
-object = { one: 1, two: 2 }
-alert("#{key} = #{value}") for key, value of object
 ```
 
 <a name="extending_native_objects"/>
@@ -408,39 +401,6 @@ For example, do not modify `Array.prototype` to introduce `Array#forEach`.
 ## Exceptions
 
 Do not suppress exceptions.
-
-<a name="annotations"/>
-## Annotations
-
-Use annotations when necessary to describe a specific action that must be taken against the indicated block of code.
-
-Write the annotation on the line immediately above the code that the annotation is describing.
-
-The annotation keyword should be followed by a colon and a space, and a descriptive note.
-
-```coffeescript
-  # FIXME: The client's current state should *not* affect payload processing.
-  resetClientState()
-  processPayload()
-```
-
-If multiple lines are required by the description, indent subsequent lines with two spaces:
-
-```coffeescript
-  # TODO: Ensure that the value returned by this call falls within a certain
-  #   range, or throw an exception.
-  analyze()
-```
-
-Annotation types:
-
-- `TODO`: describe missing functionality that should be added at a later date
-- `FIXME`: describe broken code that must be fixed
-- `OPTIMIZE`: describe code that is inefficient and may become a bottleneck
-- `HACK`: describe the use of a questionable (or ingenious) coding practice
-- `REVIEW`: describe code that should be reviewed to confirm implementation
-
-If a custom annotation is required, the annotation should be documented in the project's README.
 
 <a name="miscellaneous"/>
 ## Miscellaneous
